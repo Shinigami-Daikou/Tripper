@@ -1,0 +1,12 @@
+{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "Im looking to visit %s. I want you to give me a list of %d best recommended places that I can visit there. I want you to give me the following information: Places(name of place, time taken to explore the place, best time to visit the place:, best time of year to visit the place, Additional metadata about the place features, recommended (for best %d places based of userReview and number of reviews), userReview (out of five), address, opening time, closing time, is it sunset/sunrise point). Run the query with Gemini 2.0 Pro Experimental and use google search and google maps for data validation. In the end, return the data in the following JSON format. The output should be in a single line without new line and additional spaces. {places: [{name: '', address: '', timeToExplore: <time in minutes>, openingTime: '', closingTime: '', isSun: <sunrise/sunset/NA>, bestVisitTime: [[HH:MM, HH:MM]], bestTimeYear: [[DD/MM, DD/MM]], userRating: <rating>, isRecommended: false/true, metadata: ''},]}"
+        }
+      ]
+    }
+  ]
+}

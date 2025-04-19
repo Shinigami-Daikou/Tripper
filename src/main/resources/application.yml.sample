@@ -1,0 +1,17 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+genAIURL: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-thinking-exp-01-21:generateContent?key="
+apiKey: <GEMINI_API_KEY>
+promptPath: "src/main/resources/places_initial_prompt.json"
+geminiProURL: "https://generativelanguage.googleapis.com/v1beta/models/"
+gcpProjectID: "traveller-itinerary"
+modelID: "gemini-2.5-pro-exp-03-25"
+googleMapsAPIKey: <GMAPS_API_KEY>
+verifyPlacesPromptPath: "src/main/resources/verify_places_prompt.json"
+googlePlacesURL: "https://places.googleapis.com/v1/places"
+tmpFolder: "src/main/resources/tmp/"
+geminiFileUrl: "https://generativelanguage.googleapis.com/upload/v1beta/files"
+googleRoutesURL: "https://routes.googleapis.com/distanceMatrix/v2:computeRouteMatrix"

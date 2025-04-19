@@ -1,0 +1,27 @@
+{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "fileData": {
+            "mimeType": "text/plain",
+            "fileUri": "%s"
+          }
+        },
+        {
+          "fileData": {
+            "mimeType": "text/plain",
+            "fileUri": "%s"
+          }
+        },
+        {
+          "text": "You are an expert at comparing place details. I have the following JSON data representing places(name of place, time taken to explore the place, best time to visit the place:, best time of year to visit the place, Additional metadata about the place features, recommended (for best 10 places based of userReview and number of reviews), userReview (out of five), address, opening time, closing time, is it sunset/sunrise point). I've attached the initial place details and place details that I've fetched from Google Places API. For each place, use the Google Places API's Place Details and Google Web Search, giving a higher accuracy to google places result. I want you to perform the following tasks: 1. Verify the details for each location  2. Determine whether the place is famous for sunrise/sunset or not, because you can view sunrise/sunset from any place  3. Fill/Give me the null/empty details for each place. Give me the output in the same format as the places JSON data. Only JSON and in a single line without extra white spaces."
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "responseMimeType": "text/plain"
+  }
+}
