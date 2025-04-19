@@ -1,8 +1,7 @@
-package com.travel_ai.itinerary_model.entity;
+package com.travel_ai.tripper.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import lombok.Getter;
 
 import java.util.List;
 

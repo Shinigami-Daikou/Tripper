@@ -1,13 +1,13 @@
-package com.travel_ai.itinerary_model;
+package com.travel_ai.tripper;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ItineraryModelApplication {
+public class Tripper {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ItineraryModelApplication.class, args);
+		SpringApplication.run(Tripper.class, args);
 	}
 
 }

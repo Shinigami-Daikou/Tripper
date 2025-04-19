@@ -1,22 +1,16 @@
-package com.travel_ai.itinerary_model.service;
+package com.travel_ai.tripper.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.travel_ai.itinerary_model.configuration.ItineraryConfig;
-import com.travel_ai.itinerary_model.entity.AIOutput;
-import com.travel_ai.itinerary_model.entity.City;
-import com.travel_ai.itinerary_model.entity.Distance;
-import com.travel_ai.itinerary_model.entity.Place;
-import com.travel_ai.itinerary_model.entity.routes.Destination;
-import com.travel_ai.itinerary_model.entity.routes.Origin;
-import com.travel_ai.itinerary_model.entity.routes.RouteMatrixReq;
-import com.travel_ai.itinerary_model.entity.routes.Waypoint;
-import com.travel_ai.itinerary_model.util.GeminiFileUtil;
-import com.travel_ai.itinerary_model.util.GoogleMapsUtil;
+import com.travel_ai.tripper.configuration.ItineraryConfig;
+import com.travel_ai.tripper.entity.AIOutput;
+import com.travel_ai.tripper.entity.Distance;
+import com.travel_ai.tripper.entity.Place;
+import com.travel_ai.tripper.util.GeminiFileUtil;
+import com.travel_ai.tripper.util.GoogleMapsUtil;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -27,7 +21,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.ArrayList;

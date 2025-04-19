@@ -1,11 +1,11 @@
-package com.travel_ai.itinerary_model.controller;
+package com.travel_ai.tripper.controller;
 
-import com.travel_ai.itinerary_model.configuration.ItineraryConfig;
-import com.travel_ai.itinerary_model.entity.City;
-import com.travel_ai.itinerary_model.entity.Distance;
-import com.travel_ai.itinerary_model.entity.Place;
-import com.travel_ai.itinerary_model.service.GeminiFlashService;
-import com.travel_ai.itinerary_model.service.GeminiProService;
+import com.travel_ai.tripper.configuration.ItineraryConfig;
+import com.travel_ai.tripper.entity.City;
+import com.travel_ai.tripper.entity.Distance;
+import com.travel_ai.tripper.entity.Place;
+import com.travel_ai.tripper.service.GeminiFlashService;
+import com.travel_ai.tripper.service.GeminiProService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

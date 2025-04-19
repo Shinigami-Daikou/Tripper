@@ -1,4 +1,4 @@
-package com.travel_ai.itinerary_model.entity.routes;
+package com.travel_ai.tripper.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -9,7 +9,10 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RouteMatrixReq {
-    private List<Origin> origins;
-    private List<Destination> destinations;
+public class Distance {
+    String source;
+    String dest;
+    double dist;
+    int timeTaken;
+    List<String> modeTransport;
 }

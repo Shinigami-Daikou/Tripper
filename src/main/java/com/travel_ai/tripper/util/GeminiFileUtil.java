@@ -1,9 +1,8 @@
-package com.travel_ai.itinerary_model.util;
+package com.travel_ai.tripper.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.travel_ai.itinerary_model.configuration.ItineraryConfig;
-import com.travel_ai.itinerary_model.service.GeminiProService;
+import com.travel_ai.tripper.configuration.ItineraryConfig;
 import okhttp3.*;
 import org.jboss.logging.Logger;
 import org.json.JSONObject;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.IOException;
 import java.net.URLConnection;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 @Component

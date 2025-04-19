@@ -1,4 +1,4 @@
-package com.travel_ai.itinerary_model;
+package com.travel_ai.tripper;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

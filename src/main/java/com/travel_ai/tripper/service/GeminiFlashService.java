@@ -1,11 +1,11 @@
-package com.travel_ai.itinerary_model.service;
+package com.travel_ai.tripper.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.travel_ai.itinerary_model.configuration.ItineraryConfig;
-import com.travel_ai.itinerary_model.entity.AIOutput;
-import com.travel_ai.itinerary_model.entity.City;
+import com.travel_ai.tripper.configuration.ItineraryConfig;
+import com.travel_ai.tripper.entity.AIOutput;
+import com.travel_ai.tripper.entity.City;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
