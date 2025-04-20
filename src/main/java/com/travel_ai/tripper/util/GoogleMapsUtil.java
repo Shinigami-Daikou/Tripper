@@ -72,7 +72,7 @@ public class GoogleMapsUtil {
         List<Origin> origins = new ArrayList<>();
         List<Destination> destinations = new ArrayList<>();
 
-        for(int i = 0; i < placeIDMap.size(); i++){
+        for(int i = 0; i < placeIDList.size(); i++){
             origins.add(new Origin(new Waypoint(placeIDList.get(i))));
             destinations.add(new Destination(new Waypoint(placeIDList.get(i))));
         }

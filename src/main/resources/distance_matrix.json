@@ -1,0 +1,21 @@
+{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "fileData": {
+            "mimeType": "text/plain",
+            "fileUri": "%s"
+          }
+        },
+        {
+          "text": "I have a list of places as googlePlaceID: place. \n %s \n I have a JSON file named distance_matrix.txt containing travel data between several places. The format is [{source: '', dest: '', dist: <distance in Kms>, timeTaken: <minutes>, modeTransport: [Drive, Ferry, Train,...]}, ...]. This initial data only includes places reachable by 'Drive'.\nI need you to: 1. Determine the missing source-destination pairs required to create a complete distance matrix for all unique places. 2. For any missing pairs use Google Search to find the travel distance, time, and mode(s) of transport, as they are not accessible by Road. 3. Incorporate this information into the distance matrix, ensuring the modeTransport accurately reflects the actual mode(s) used (e.g., ['Drive', 'Ferry']). 4. Combine the original data with the newly found information to create a complete distance matrix for all unique place pairs. 5. Finally, filter this complete matrix to remove any entries where the source and destination are the same, so the output includes only trips between different places.\nPlease provide the final distance matrix in the specified JSON format. Only JSON output without any comments and in a single line without extra white spaces."
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "responseMimeType": "text/plain"
+  }
+}

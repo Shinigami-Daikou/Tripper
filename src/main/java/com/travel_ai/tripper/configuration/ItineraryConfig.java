@@ -22,4 +22,7 @@ public class ItineraryConfig {
     private String tmpFolder;
     private String geminiFileUrl;
     private String googleRoutesURL;
+    private String distanceMatrixPromptPath;
+    private String travelItineraryPromptPath;
+    private String gemini2_5URL;
 }

@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Service
 public class GeminiProService {
@@ -115,7 +116,7 @@ public class GeminiProService {
                 String responseStr = aiOut.getText();
                 responseStr = responseStr.substring(responseStr.indexOf('['));
                 responseStr = responseStr.substring(0, responseStr.lastIndexOf(']') + 1);
-
+                System.out.println(responseStr);
                 try {
                     verifiedPlace = mapper.readValue(responseStr, new TypeReference<List<Place>>() {});
                 } catch (JsonProcessingException e) {
@@ -130,6 +131,9 @@ public class GeminiProService {
     }
 
     public List<Distance> generateDistanceMatrix(List<Place> places) {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
         HashMap<String, String> placeIDMap = new HashMap<>();
         List<String> placeIDList = new ArrayList<>();
 
@@ -138,7 +142,58 @@ public class GeminiProService {
             placeIDList.add(place.getGooglePlaceId());
         }
 
-        List<Distance> distancesMatrix = gmapsUtil.getRoutesMatrix(placeIDMap, placeIDList);
-        return distancesMatrix;
+        String placesString =placeIDMap.entrySet().stream()
+                .map(entry -> entry.getKey() + ":" + entry.getValue())
+                .collect(Collectors.joining(", "));
+
+
+        try {
+            List<Distance> distancesMatrix = gmapsUtil.getRoutesMatrix(placeIDMap, placeIDList);
+            String distanceMatrix = mapper.writeValueAsString(distancesMatrix);
+            writeToTmpFile(distanceMatrix, "distance_matrix.txt");
+        } catch (JsonProcessingException e) {
+            logger.error("Error: Distance matrix cannot be converted to String", e);
+        }
+
+        String distanceMatrixFileURL = geminiFileUtil.uploadFile("distance_matrix.txt");
+        System.out.println(distanceMatrixFileURL);
+
+        JsonNode prompt = null;
+        String formattedQueryParam = null;
+        try {
+            Path promptFilePath = Paths.get(itineraryConfig.getDistanceMatrixPromptPath());
+            String promptString = Files.readString(promptFilePath, StandardCharsets.UTF_8);
+            formattedQueryParam = String.format(promptString, distanceMatrixFileURL, placesString);
+            prompt = mapper.readValue(formattedQueryParam, JsonNode.class);
+        } catch (IOException e) {
+            logger.error("Unable to read prompt", e);
+        }
+
+        Request request = new Request.Builder().
+                url(itineraryConfig.getGeminiProURL() + itineraryConfig.getModelID() + ":generateContent?key=" +
+                        itineraryConfig.getApiKey()).
+                header("Content-Type", "application/json").
+                post(RequestBody.create(prompt.toString().getBytes(StandardCharsets.UTF_8))).build();
+
+        List<Distance> distanceMatrix = null;
+        try {
+            Response response = client.newCall(request).execute();
+            try (InputStream stream = response.body().byteStream()) {
+                AIOutput aiOut = mapper.readValue(stream, AIOutput.class);
+                String responseStr = aiOut.getText();
+                responseStr = responseStr.substring(responseStr.indexOf('['));
+                responseStr = responseStr.substring(0, responseStr.lastIndexOf(']') + 1);
+                System.out.println(responseStr);
+                try {
+                    distanceMatrix = mapper.readValue(responseStr, new TypeReference<List<Distance>>() {});
+                } catch (JsonProcessingException e) {
+                    logger.error("Mapping to Distance Matrix failed", e.getStackTrace());
+                }
+            }
+        } catch (IOException e) {
+            logger.error("Error while reading response from Gemini", e.getStackTrace());
+        }
+
+        return distanceMatrix;
     }
 }

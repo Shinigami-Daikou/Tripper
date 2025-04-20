@@ -1,0 +1,21 @@
+{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "fileData": {
+            "mimeType": "text/plain",
+            "fileUri": "%s"
+          }
+        },
+        {
+          "text": "I am on vacation in %s from %s to %s. I want to visit these places: %s. Provided data city_data.txt contains data about place(name: '', address: '', timeToExplore: <time in minutes>, openingTime: '', closingTime: '', isSun: <sunrise/sunset/NA>, bestVisitTime: [[HH:MM, HH:MM]], bestTimeYear: [[DD/MM, DD/MM]], userRating: <rating>, isRecommended: false/true, metadata: '') and a distanceMatrix(source: '', dest: '', dist: <distance in Kms>, timeTaken: <minutes>, modeTransport: [Drive, Ferry, Train,...]). I want you to generate an itinerary with considering following points:\n1. It's not necessary to visit all the places. 2. If place is sunset/sunrise, place them in itinerary accordingly. 3. Make sure that there's enough time to reach and visit place after open time and before close time 4. Leave time for several breaks such as lunch, snacks, breakfast, etc. 4 - 5 small other breaks as well (don't mention these small breaks). 5. Give additional 15-30 minute leeway time between each location and additional 15-30 minutes to spend time in the place.\nGive me the itinerary data in the following format: {itinerary: [{day: <day number>,  date: '', activities: [{time:'from - to', description: '<Go creative here, if possible give recommendation about dishes and restaurants during breaks>'}]}]}\nGive only JSON data and in a single line without extra white spaces."
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "responseMimeType": "text/plain"
+  }
+}
